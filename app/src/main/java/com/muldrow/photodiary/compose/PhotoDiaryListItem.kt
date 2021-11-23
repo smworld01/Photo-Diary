@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.muldrow.photodiary.data.PhotoDiary
+import com.muldrow.photodiary.room.entities.PhotoDiary
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,7 +27,7 @@ fun PhotoDiaryListItem(photoDiary: PhotoDiary, showDiary: (Int) -> Unit ) {
             .padding(vertical = 8.dp, horizontal = 16.dp)
             .fillMaxWidth()
             .clickable {
-                showDiary(photoDiary.uid)
+                showDiary(photoDiary.id)
             },
         elevation = 2.dp,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),

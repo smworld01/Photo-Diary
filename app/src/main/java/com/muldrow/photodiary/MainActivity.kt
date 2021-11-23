@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,7 +17,10 @@ import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.muldrow.photodiary.compose.screen.*
 import com.muldrow.photodiary.ui.theme.PhotoDiaryTheme
+import com.muldrow.photodiary.viewmodel.DiaryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +35,15 @@ class MainActivity : ComponentActivity() {
 
             }
 
-
+            val photoDiaryViewModel: DiaryViewModel = viewModel()
             val navController = rememberNavController()
             PhotoDiaryTheme {
                 NavHost(navController = navController, startDestination = "diary/list") {
                     composable("diary/list") {
-                        DiaryListScreen(navController = navController)
+                        DiaryListScreen(navController = navController, viewModel = photoDiaryViewModel)
                     }
                     composable("diary/write") {
-                        DiaryWriteScreen()
+                        DiaryWriteScreen(viewModel = photoDiaryViewModel)
                     }
                     composable(
                         "diary/item/{diaryId}",

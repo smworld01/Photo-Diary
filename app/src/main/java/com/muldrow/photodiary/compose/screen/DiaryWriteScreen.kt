@@ -9,16 +9,15 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.muldrow.photodiary.viewmodel.DiaryViewModel
 import com.muldrow.photodiary.compose.*
-import com.muldrow.photodiary.data.PhotoDiary
-import java.util.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.muldrow.photodiary.room.entities.PhotoDiaryWithContents
 
 @Composable
-fun DiaryWriteScreen(model: DiaryViewModel = viewModel()) {
+fun DiaryWriteScreen(viewModel: DiaryViewModel) {
     var title by rememberSaveable { mutableStateOf("") }
     val setTitle = { s:String -> title = s }
-    val diary = remember { PhotoDiary(0, null, Date(), title) }
+    val diary = remember { PhotoDiaryWithContents() }
 
     var uri: Uri? by rememberSaveable { mutableStateOf(null)}
     var setUri = { u:Uri? -> uri = u}

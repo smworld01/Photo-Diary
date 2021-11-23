@@ -1,21 +1,25 @@
 package com.muldrow.photodiary.viewmodel
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import com.muldrow.photodiary.PhotoDiaryProvider
-import com.muldrow.photodiary.data.PhotoDiary
+import androidx.lifecycle.*
+import com.muldrow.photodiary.repository.PhotoDiaryRepository
+import com.muldrow.photodiary.room.entities.PhotoDiary
+import com.muldrow.photodiary.room.entities.PhotoDiaryWithContents
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-// TODO Hilt
-class DiaryViewModel(
+@HiltViewModel
+class DiaryViewModel @Inject constructor(
     private val saveState: SavedStateHandle,
-    // TODO Repository
+    private val repository: PhotoDiaryRepository
 ): ViewModel() {
+    private val _photoDiary = MutableLiveData<PhotoDiaryWithContents>()
 
-    fun getDiary(uid: Int?): PhotoDiary? {
-        return PhotoDiaryProvider.diaryList.find { photoDiary ->
-            photoDiary.uid == uid
-        }
-    }
+    val photoDiary get(): LiveData<PhotoDiaryWithContents> = _photoDiary
+    val photoDiaryList = repository.getPhotoDiaryTitleList().asLiveData()
+
+
+    suspend fun getDiary(id: Int) = repository.getPhotoDiaryById(id)
 
     fun addDiary() {
         // TODO

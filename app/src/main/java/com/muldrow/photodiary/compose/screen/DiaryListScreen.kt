@@ -8,9 +8,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.muldrow.photodiary.compose.*
+import com.muldrow.photodiary.viewmodel.DiaryViewModel
 
 @Composable
-fun DiaryListScreen(navController: NavController) {
+fun DiaryListScreen(
+    navController: NavController,
+    viewModel: DiaryViewModel
+) {
     Surface(color = MaterialTheme.colors.background) {
         Scaffold(
             topBar = {
@@ -22,7 +26,10 @@ fun DiaryListScreen(navController: NavController) {
                 }
             },
         ) {
-            PhotoDiaryList(navController = navController)
+            PhotoDiaryList(
+                navController = navController,
+                viewModel = viewModel
+            )
         }
     }
 }
