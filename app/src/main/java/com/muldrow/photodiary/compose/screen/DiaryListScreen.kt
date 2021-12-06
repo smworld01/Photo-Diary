@@ -3,6 +3,7 @@ package com.muldrow.photodiary.compose.screen
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
@@ -22,7 +23,7 @@ fun DiaryListScreen(
             },
             floatingActionButton = {
                 FloatingActionButton(onClick = { navController.navigate("diary/write") }) {
-                    Icon(Icons.Filled.Add, contentDescription = "일기 쓰기")
+                    Icon(Icons.Default.Create, contentDescription = "일기 쓰기")
                 }
             },
         ) {

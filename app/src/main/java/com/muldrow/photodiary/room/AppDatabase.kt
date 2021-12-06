@@ -5,10 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.muldrow.photodiary.room.dao.PhotoDiaryContentDao
 import com.muldrow.photodiary.room.dao.PhotoDiaryDao
-import com.muldrow.photodiary.room.entities.PhotoDiary
-import com.muldrow.photodiary.room.entities.PhotoDiaryContent
+import com.muldrow.photodiary.room.entities.PhotoDiaryHeader
+import com.muldrow.photodiary.room.entities.PhotoDiaryBody
 
-@Database(entities = [PhotoDiary::class, PhotoDiaryContent::class], version = 1)
+@Database(entities = [PhotoDiaryHeader::class, PhotoDiaryBody::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun photoDiaryDao(): PhotoDiaryDao

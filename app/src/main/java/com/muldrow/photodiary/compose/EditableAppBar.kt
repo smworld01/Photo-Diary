@@ -12,7 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun EditableAppBar(title: String, setTitle: (String) -> Unit) {
+fun EditableAppBar(title: String, setTitle: (String) -> Unit, colors: TextFieldColors) {
     TopAppBar(
         elevation = 0.dp,
         backgroundColor = Color.Transparent
@@ -22,10 +22,10 @@ fun EditableAppBar(title: String, setTitle: (String) -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 textStyle = MaterialTheme.typography.h6.copy(textAlign = TextAlign.Center),
                 singleLine = true,
-                colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Unspecified),
+                colors = colors,
                 placeholder = {
                     Text(
-                        text = "제목을 입력해 봐요.",
+                        text = "제목을 입력해 주세요.",
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )}

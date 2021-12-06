@@ -31,7 +31,7 @@ fun PhotoDiaryList(
         items(
             items = photoDiaries?: emptyList(),
             itemContent = {
-                PhotoDiaryListItem(photoDiary = it, showDiary = showDiary)
+                PhotoDiaryListItem(photoDiaryHeader = it, showDiary = showDiary)
             }
         )
     }
@@ -42,9 +42,7 @@ fun PhotoDiaryList(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = """등록된 일기가 없어요.
-                        |일기를 써보시겠어요?
-                    """.trimMargin())
+            Text(text = "등록된 일기가 없어요")
         }
     }
 }

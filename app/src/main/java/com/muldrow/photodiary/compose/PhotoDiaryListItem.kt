@@ -14,20 +14,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.muldrow.photodiary.room.entities.PhotoDiary
+import com.muldrow.photodiary.room.entities.PhotoDiaryHeader
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 @Composable
-fun PhotoDiaryListItem(photoDiary: PhotoDiary, showDiary: (Int) -> Unit ) {
+fun PhotoDiaryListItem(photoDiaryHeader: PhotoDiaryHeader, showDiary: (Int) -> Unit ) {
     val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
     Card(
         modifier = Modifier
             .padding(vertical = 8.dp, horizontal = 16.dp)
             .fillMaxWidth()
             .clickable {
-                showDiary(photoDiary.id)
+                showDiary(photoDiaryHeader.id)
             },
         elevation = 2.dp,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
@@ -39,8 +39,8 @@ fun PhotoDiaryListItem(photoDiary: PhotoDiary, showDiary: (Int) -> Unit ) {
                     .fillMaxWidth()
                     .align(Alignment.CenterVertically)
             ) {
-                Text(text = sdf.format(photoDiary.date), style = MaterialTheme.typography.h6)
-                Text(text = photoDiary.title, style = MaterialTheme.typography.h6)
+                Text(text = sdf.format(photoDiaryHeader.date), style = MaterialTheme.typography.h6)
+                Text(text = photoDiaryHeader.title, style = MaterialTheme.typography.h6)
             }
         }
     }

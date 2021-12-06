@@ -7,9 +7,8 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class PhotoDiary(
+data class PhotoDiaryHeader(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String,
-    val imageUri: Uri?,
     val date: Date
 )

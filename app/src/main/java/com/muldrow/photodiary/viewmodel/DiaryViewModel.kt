@@ -2,10 +2,8 @@ package com.muldrow.photodiary.viewmodel
 
 import androidx.lifecycle.*
 import com.muldrow.photodiary.repository.PhotoDiaryRepository
-import com.muldrow.photodiary.room.entities.PhotoDiary
 import com.muldrow.photodiary.room.entities.PhotoDiaryWithContents
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
