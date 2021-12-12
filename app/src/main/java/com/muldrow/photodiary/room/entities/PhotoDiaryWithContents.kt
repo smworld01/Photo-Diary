@@ -6,10 +6,10 @@ import androidx.room.Relation
 
 @Entity
 data class PhotoDiaryWithContents(
-    @Embedded val header: PhotoDiaryHeader? = null,
+    @Embedded val header: PhotoDiaryHeader,
     @Relation(
         parentColumn = "id",
         entityColumn = "titleId",
     )
-    val bodies: List<PhotoDiaryBody>? = null
+    val bodies: List<PhotoDiaryBody> = emptyList()
 )

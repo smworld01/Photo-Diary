@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PhotoDiaryBody(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val titleId: Int,
-    val imageUri: Uri,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val titleId: Long? = null,
+    val imageUri: Uri?,
     val text: String,
 )

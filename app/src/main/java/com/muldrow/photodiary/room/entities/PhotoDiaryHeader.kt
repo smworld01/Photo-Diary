@@ -8,7 +8,7 @@ import java.util.*
 
 @Entity
 data class PhotoDiaryHeader(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
     val date: Date
 )

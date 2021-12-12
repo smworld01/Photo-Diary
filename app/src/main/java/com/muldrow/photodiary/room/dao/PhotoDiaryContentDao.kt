@@ -11,6 +11,9 @@ interface PhotoDiaryContentDao {
     @Insert
     suspend fun write(diary: PhotoDiaryBody)
 
+    @Insert
+    suspend fun write(diary: List<PhotoDiaryBody>)
+
     @Query("SELECT * FROM PhotoDiaryBody WHERE id == :id")
     suspend fun getById(id: Int): PhotoDiaryBody
 

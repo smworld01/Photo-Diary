@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -43,13 +44,16 @@ class MainActivity : ComponentActivity() {
                         DiaryListScreen(navController = navController, viewModel = photoDiaryViewModel)
                     }
                     composable("diary/write") {
-                        DiaryWriteScreen(viewModel = photoDiaryViewModel)
+                        DiaryWriteScreen(navController = navController, viewModel = photoDiaryViewModel)
                     }
                     composable(
                         "diary/item/{diaryId}",
                         arguments = listOf(navArgument("diaryId") {type = NavType.IntType})
                     ) {
-                        DiaryScreen(uid = it.arguments?.getInt("diaryId", 0))
+                        DiaryScreen(
+                            uid = it.arguments?.getInt("diaryId", 0),
+                            model = photoDiaryViewModel
+                        )
                     }
                 }
             }

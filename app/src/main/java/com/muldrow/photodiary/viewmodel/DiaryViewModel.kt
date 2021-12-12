@@ -19,7 +19,7 @@ class DiaryViewModel @Inject constructor(
 
     suspend fun getDiary(id: Int) = repository.getPhotoDiaryById(id)
 
-    fun addDiary() {
-        // TODO
+    suspend fun writeDiary(diary: PhotoDiaryWithContents) {
+        repository.writePhotoDiary(diary = diary)
     }
 }

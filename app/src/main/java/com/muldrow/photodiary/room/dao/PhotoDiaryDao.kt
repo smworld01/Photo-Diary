@@ -11,12 +11,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PhotoDiaryDao {
     @Insert
-    suspend fun write(diaryHeader: PhotoDiaryHeader)
+    suspend fun write(diaryHeader: PhotoDiaryHeader): Long
 
     @Query("SELECT * FROM PhotoDiaryHeader WHERE id == :id")
     suspend fun getTitleById(id: Int): PhotoDiaryHeader
 
-    @Query("SELECT * FROM PhotoDiaryHeader")
+    @Query("SELECT * FROM PhotoDiaryHeader ORDER BY id DESC")
     fun getTitleAll(): Flow<List<PhotoDiaryHeader>>
 
     @Transaction
